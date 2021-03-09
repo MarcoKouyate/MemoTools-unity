@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MemoUnity {
+namespace MemoTools {
 
     /// <summary>
     /// This Monobehaviour ensures that only one gameObject attached with this component exists in the scene. 
