@@ -17,7 +17,7 @@ namespace MemoTools {
         /// <summary>
         /// Use this property to access the singleton instance.  
         /// </summary>
-        public T Instance { get; private set; }
+        static public T Instance { get; private set; }
 
 
         /// <summary>
