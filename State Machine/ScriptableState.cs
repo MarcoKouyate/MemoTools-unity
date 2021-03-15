@@ -3,11 +3,13 @@ using UnityEngine;
 
 namespace MemoTools {
 
-    public class ScriptableState<StateType> : ScriptableState where StateType:ScriptableState
+    public class ScriptableState<StateType, MachineType> : ScriptableState 
+        where StateType:ScriptableState<StateType, MachineType>
+        where MachineType: StateMachine<StateType, MachineType>
     {
-        protected GenericStateMachine<StateType> Machine { get; private set; }
+        protected MachineType Machine { get; private set; }
 
-        public void Plug(GenericStateMachine<StateType> machine)
+        public void Plug(MachineType machine)
         {
             Machine = machine;
         }

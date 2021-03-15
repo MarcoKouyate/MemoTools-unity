@@ -2,11 +2,13 @@ using UnityEngine;
 
 namespace MemoTools { 
 
-    public abstract class StateMachine<StateType> : GenericStateMachine<StateType> where StateType : ScriptableState<StateType>
+    public abstract class StateMachine<StateType, MachineType> : GenericStateMachine<StateType> 
+        where StateType : ScriptableState<StateType, MachineType>
+        where MachineType: StateMachine<StateType, MachineType>
     {
         protected override void PlugState()
         {
-            CurrentState.Plug(this);
+            CurrentState.Plug((MachineType) this);
         }
     }
 
@@ -28,12 +30,12 @@ namespace MemoTools {
 
         #region Unity Cycle
         /// <summary>
-        /// Awake is already used by the StateMachine base class. 
-        /// It is recommanded to override AwakeMachine() instead in order to execute code at Awake Time.
+        /// Start is already used by the StateMachine base class. 
+        /// It is recommanded to override AwakeMachine() instead in order to execute code at Start Time.
         /// </summary>
-        protected void Awake()
+        protected void Start()
         {
-            AwakeMachine();
+            StartMachine();
             SwitchTo(StartingState);
         }
 
@@ -64,7 +66,7 @@ namespace MemoTools {
         /// <summary>
         /// This method is called before at Awake time before switching to the first state.
         /// </summary>
-        protected virtual void AwakeMachine()
+        protected virtual void StartMachine()
         {
 
         }

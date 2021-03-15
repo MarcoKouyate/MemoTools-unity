@@ -5,7 +5,7 @@ namespace MemoTools {
     {
         static public bool IsVectorActive(Vector2 vector, float threshold)
         {
-            return (vector.x > threshold || vector.y > threshold);
+            return (Mathf.Abs(vector.x) > threshold || Mathf.Abs(vector.y) > threshold);
         }
     }
  }
