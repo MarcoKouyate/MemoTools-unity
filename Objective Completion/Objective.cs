@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MemoTools {
 
-    public enum CompareType { AND, OR }
+    
 
     [CreateAssetMenu(menuName = "MemoTools/Objective/Objective", fileName = "Self Completed Objective")]
     public class Objective : ScriptableObject

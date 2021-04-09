@@ -3,8 +3,6 @@ using UnityEngine;
 
 namespace MemoTools { 
 
-    public enum CompareEnum { Equal, LessThan, MoreThan }
-
     [CreateAssetMenu(menuName ="MemoTools/Objective/CompleteAtIntCount", fileName ="Objective Completed At Int Count")]
     public class CompleteObjectiveAtIntCount : Objective
     {
