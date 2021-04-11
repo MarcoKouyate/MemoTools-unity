@@ -11,14 +11,19 @@ namespace MemoTools {
             Reset();
         }
 
+        public float Remaining { get => _nextTime - Time.time; }
+
+        public float Elapsed { get => Time.time - _startTime; }
+
         public bool IsExpired
         { 
-            get => Time.time > _nextTime;
+            get => Remaining <= 0;
         }
 
         public void Reset()
         {
-            _nextTime = Time.time + _interval;
+            _startTime = Time.time;
+            _nextTime = _startTime + _interval;
             _active = true;
         }
 
@@ -38,6 +43,7 @@ namespace MemoTools {
 
         private bool _active;
         private bool _repeat;
+        private float _startTime;
         private float _nextTime;
         private float _interval;
     }
