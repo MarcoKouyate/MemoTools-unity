@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MemoTools {
     #region Unity Enums
-    public enum LifetimeEvent { OnAwake, OnStart, OnDestroy, OnEnable, OnDisable }
+    public enum LifetimeEventType { OnAwake, OnStart, OnDestroy, OnEnable, OnDisable }
     #endregion
 
     #region Compare enums
