@@ -8,7 +8,7 @@ namespace MemoTools {
         {
             _interval = interval;
             _repeat = repeat;
-            _active = true;
+            Reset();
         }
 
         public bool IsExpired

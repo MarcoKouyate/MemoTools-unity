@@ -3,12 +3,9 @@ using UnityEngine;
 
 namespace MemoTools {
     [RequireComponent(typeof(AudioSource))]
-    public class AudioManager : SingletonMonoBehaviour<AudioManager>
+    public class AudioPlayer : MonoBehaviour
     {
-        [SerializeField] private bool _dontDestroyOnLoad;
-        protected override bool DestroyOnLoad { get => !_dontDestroyOnLoad; }
-
-        protected override void InitAwake()
+        private void Awake()
         {
             _source = GetComponent<AudioSource>();
         }
