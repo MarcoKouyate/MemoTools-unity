@@ -15,6 +15,7 @@ namespace MemoTools {
         protected override void OnEvent()
         {
             if (_isQuitting) return;
+            if (!_pool) Debug.Log(gameObject.name);
             _pool.Take(_spawn.position, _spawn.transform.rotation);
         }
 

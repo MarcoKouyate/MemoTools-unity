@@ -10,7 +10,7 @@ namespace MemoTools {
 
         private void Awake()
         {
-            _pooledObjects = new Stack<GameObject>();
+            _pooledObjects = new Queue<GameObject>();
 
             GameObject parent = new GameObject();
             parent.name = $"{ _prefab.name} Clones";
@@ -20,7 +20,7 @@ namespace MemoTools {
             {
                 GameObject pooledObject = Instantiate(_prefab, parent.transform);
                 pooledObject.SetActive(false);
-                _pooledObjects.Push(pooledObject);
+                _pooledObjects.Enqueue(pooledObject);
             }
 
             _prefab.SetActive(true);
@@ -28,7 +28,9 @@ namespace MemoTools {
 
         public GameObject Take(Vector3 position, Quaternion rotation)
         {
-            GameObject obj = _pooledObjects.Pop();
+            GameObject obj = _pooledObjects.Dequeue();
+            _pooledObjects.Enqueue(obj);
+            
 
             if (!obj) return null; 
 
@@ -38,6 +40,6 @@ namespace MemoTools {
             return obj;
         }
 
-        private Stack<GameObject> _pooledObjects;
+        private Queue<GameObject> _pooledObjects;
     }
 }
