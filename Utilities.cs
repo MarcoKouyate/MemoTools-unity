@@ -14,5 +14,15 @@ namespace MemoTools {
             vector1 = vector2;
             vector2 = temp;
         }
+
+        static public bool CompareTags(GameObject other, string[] tags)
+        {
+            foreach (string tag in tags)
+            {
+                if (other.CompareTag(tag)) return true;
+            }
+
+            return false;
+        }
     }
  }
