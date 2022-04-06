@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace MemoTools { 
     public class Utilities
@@ -14,5 +16,24 @@ namespace MemoTools {
             vector1 = vector2;
             vector2 = temp;
         }
+
+        static public bool CompareTags(GameObject other, string[] tags)
+        {
+            foreach (string tag in tags)
+            {
+                if (other.CompareTag(tag)) return true;
+            }
+
+            return false;
+        }
     }
- }
+
+
+    public static class GameObjectUtils
+    {
+        public static List<GameObject> SortByDistance(this List<GameObject> objects, Vector3 mesureFrom)
+        {
+            return objects.OrderBy(x => Vector3.Distance(x.transform.position, mesureFrom)).ToList();
+        }
+    }
+}
