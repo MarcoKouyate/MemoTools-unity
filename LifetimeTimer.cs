@@ -15,7 +15,7 @@ namespace MemoTools {
 
         private void Update()
         {
-            if (Timer.OnTimeEnd) Destroy(gameObject);
+            if (Timer.IsExpired) Destroy(gameObject);
         }
 
     }

@@ -41,6 +41,11 @@ namespace MemoTools {
             }
         }
 
+        public void Expire()
+        {
+            _nextTime = Time.time;
+        }
+
         private bool _active;
         private bool _repeat;
         private float _startTime;
